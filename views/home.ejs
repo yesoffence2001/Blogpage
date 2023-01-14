@@ -1,0 +1,39 @@
+
+<%- include("partials/header"); -%>
+<div class="col-md-12 bg-light text-right">
+  <a href='/compose'>
+    <button id="compose" class="btn danger btn-default">
+      Compose
+    </button>
+  </a>
+</div>
+<div class="container" style = "margin-bottom : 40px;">
+  <div class="row">
+    <div class="col-lg-6">
+      <img src="https://legacytips.com/wp-content/uploads/2019/05/transition-from-blog-to-website-7.jpg" style="width:100%" alt="">
+    </div>
+    <div class="col-md-6" style = "padding-top : 55px ; padding-bottom : 60px; background-color:#ffccdd">
+      <b><p class = "text-center" style = "font-family: 'Nunito Sans', sans-serif;"> <%= startingContent %> </p> </b>
+    </div>
+  </div>
+</div>
+
+<%  posts.slice().reverse().forEach(function(post){ %>
+
+<h1 style = "font-family: 'Kanit', sans-serif;"><%=post.title%></h1>
+<div class="container container-fluid postContainer p-3 my-3 text-white" style = "background-color : #ffeecc">
+  <p>
+    <%=post.content.substring(0, 800) + " ..."%>
+    <a href="/posts/<%=post._id%>">Read More</a>
+  </p>
+  <% if(username==post.username) {%>
+  <form style ="display:inline;" action="/update" method="post">
+    <button style = "background : white; margin-top : 25px; margin-right : 5px;" type="submit" name="updateButton" value = "<%=post._id%>"><i class="fa fa-pencil" style = "color : green" aria-hidden="true"></i>  Edit</button>
+  </form>
+  <form style ="display:inline;" action="/delete" method="post">
+    <button style = "background : white; margin-top : 25px; margin-right : 5px;" type="submit" name="deleteButton" value="<%=post._id%>"> <i class="fa fa-trash" style = "color : red"></i> Delete</button>
+  </form>
+  <% } %>
+</div>
+<% }) %>
+<%- include("partials/footer"); -%>
