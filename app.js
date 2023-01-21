@@ -1,5 +1,5 @@
 //jshint esversion:6
-//This app is deployed at https://sheltered-reef-11735.herokuapp.com/
+//This app is deployed at	https://blogwebsite-dnr8.onrender.com
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
